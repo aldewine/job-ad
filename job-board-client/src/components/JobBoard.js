@@ -8,8 +8,12 @@ function JobBoard() {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    getJobs().then(setJobs).catch((err) => setError(true))
-  }, []);
+    getJobs().then(setJobs).catch((err) => {
+        console.error(err);
+        setError(true)
+      })
+    }
+  , []);
 
   if(error) {
     return <p>A very difficult situation occurred just now.</p>
